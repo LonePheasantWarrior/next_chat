@@ -591,6 +591,7 @@ const bytedanceModels = [
   "DeepSeek-V3",
   "DeepSeek-R1",
   "Doubao-1.5-pro-32k",
+  "Doubao-1.5-thinking-pro",
 ];
 
 const alibabaModes = [
