@@ -47,7 +47,16 @@ interface RequestPayloadForByteDance {
   frequency_penalty: number;
   top_p: number;
   max_tokens?: number;
+  thinking?: {
+    type: "disabled" | "enabled" | "auto";
+  };
 }
+
+// 声明白名单，后续可扩展
+const thinkingModelWhitelist: Array<{
+  model: string;
+  type: "disabled" | "enabled" | "auto";
+}> = [{ model: "ep-20250624110831-nw5sl", type: "disabled" }];
 
 export class DoubaoApi implements LLMApi {
   path(path: string): string {
@@ -112,6 +121,14 @@ export class DoubaoApi implements LLMApi {
       frequency_penalty: modelConfig.frequency_penalty,
       top_p: modelConfig.top_p,
     };
+
+    // 判断是否需要设置thinking字段
+    const matched = thinkingModelWhitelist.find(
+      (item) => item.model === modelConfig.model,
+    );
+    if (matched) {
+      requestPayload.thinking = { type: matched.type };
+    }
 
     const controller = new AbortController();
     options.onController?.(controller);
