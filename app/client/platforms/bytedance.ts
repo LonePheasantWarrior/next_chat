@@ -56,7 +56,7 @@ interface RequestPayloadForByteDance {
 const thinkingModelWhitelist: Array<{
   model: string;
   type: "disabled" | "enabled" | "auto";
-}> = [{ model: "ep-20250624110831-nw5sl", type: "auto" }];
+}> = [{ model: "ep-20250624110831-nw5sl", type: "disabled" }];
 
 export class DoubaoApi implements LLMApi {
   path(path: string): string {
