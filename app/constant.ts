@@ -491,6 +491,7 @@ export const VISION_MODEL_REGEXES = [
   /glm-4v/,
   /vl/i,
   /o3/,
+  /gpt-5/,
   /o4-mini/,
   /grok-4/i,
 ];
@@ -533,6 +534,8 @@ const openaiModels = [
   "o3-mini",
   "o3",
   "o4-mini",
+  "gpt-5",
+  "gpt-5-mini",
 ];
 
 const googleModels = [
