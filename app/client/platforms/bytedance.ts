@@ -25,6 +25,7 @@ import {
   getTimeoutMSByModel,
 } from "@/app/utils";
 import { fetch } from "@/app/utils/stream";
+import { models } from "@/app/components/sd";
 
 export interface OpenAIListModelResponse {
   object: string;
@@ -47,6 +48,9 @@ interface RequestPayloadForByteDance {
   frequency_penalty: number;
   top_p: number;
   max_tokens?: number;
+  thinking?: {
+    type: "disabled" | "enabled" | "auto";
+  };
 }
 
 export class DoubaoApi implements LLMApi {
@@ -112,6 +116,13 @@ export class DoubaoApi implements LLMApi {
       frequency_penalty: modelConfig.frequency_penalty,
       top_p: modelConfig.top_p,
     };
+
+    //如果是Doubao-Seed-1.6模型的话则添加thinking请求参数
+    if (modelConfig.model === "ep-20250624110831-nw5sl") {
+      requestPayload.thinking = {
+        type: "disabled",
+      };
+    }
 
     const controller = new AbortController();
     options.onController?.(controller);
