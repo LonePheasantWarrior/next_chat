@@ -539,8 +539,6 @@ const openaiModels = [
   "o3-mini",
   "o3",
   "o4-mini",
-  "gemini-2.5-pro",
-  "gemini-2.5-flash",
 ];
 
 const googleModels = [
@@ -563,6 +561,8 @@ const googleModels = [
   "gemini-2.0-pro-exp",
   "gemini-2.0-pro-exp-02-05",
   "gemini-2.5-pro-preview-06-05",
+  "gemini-2.5-pro",
+  "gemini-2.5-flash",
 ];
 
 const anthropicModels = [
